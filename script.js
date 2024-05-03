@@ -29,28 +29,30 @@ function calculateTotal(){
     const selectedSeatsArr=[]
     const seatsArr=[]
 
-
-    selectedSeats.forEach(function (seat) {
-        selectedSeatsArr.push(seat);
-    });
-    
-    seats.forEach(function (seat) {
-        seatsArr.push(seat)
-    })
-    
-    let newSelectedarr=selectedSeatsArr.map(function (seat) {
-        return seatsArr.indexOf(seat)
-    })
-
-  
    
 
+   selectedSeatsArr.push (...selectedSeats);
 
+   seatsArr .push(...seats);
 
+   let newArray=selectedSeatsArr.map(function (seat) {
+    return seatsArr.indexOf (seat)
+   })
+
+console.log(newArray);
+console.log(newArray.length);
     let price =select.value
-        count.innerText=selectedSeatCount
+       if (newArray.length==0) {
+        count.innerText=0;
+       }
+       else{
+        count.innerText=newArray.length;
+       }
         amount.innerText=selectedSeatCount*price;
- saveToLocalStroge(newSelectedarr)
+ 
+saveToLocalStroge(newArray)
+
+
 
 
 }
